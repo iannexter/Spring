@@ -2,7 +2,12 @@ package br.com.iansistemas.kotlin.Backend_Kotlin.controllers
 
 import br.com.iansistemas.kotlin.Backend_Kotlin.dtos.CupomDto
 import br.com.iansistemas.kotlin.Backend_Kotlin.dtos.CupomRequest
+import br.com.iansistemas.kotlin.Backend_Kotlin.services.CupomService
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -15,7 +20,11 @@ import org.springframework.web.bind.annotation.RestController
 //);
 
 @RestController
-class CupomController {
+class CupomController(
+
+    private val service: CupomService
+
+) {
 
 
 //    @GetMapping("/")
@@ -25,13 +34,47 @@ class CupomController {
 //    }
 
 
+//    @PostMapping("/register")
+//    fun post(@RequestBody cupom: CupomRequest): CupomDto {
+//
+//        return CupomDto(id = "123",
+//            code = cupom.code,
+//            owner = cupom.owner,
+//            clicks = 12)
+//    }
+
+
+    @GetMapping("/click/{code}")
+    fun click(@PathVariable code: String): ResponseEntity<Void> {
+
+
+        val url = service.click(code)
+        return ResponseEntity.status(HttpStatus.FOUND)
+            .header(HttpHeaders.LOCATION, url)
+            .build()
+    }
+
+    @GetMapping("/{code}")
+    fun fetch(@PathVariable code: String): CupomDto? {
+
+        return service.fetch(code)
+
+    }
+
+
+
     @PostMapping("/register")
     fun post(@RequestBody cupom: CupomRequest): CupomDto {
 
-        return CupomDto(id = "123",
-            code = cupom.code,
-            owner = cupom.owner,
-            clicks = 12)
+        val dto = service.register(cupom.code, cupom.owner)
+
+
+        return dto;
+
+
+
     }
+
+
 
 }
