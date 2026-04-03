@@ -1,1 +1,1 @@
-Backend-Kotlin: Api para geração e clicks de cupons
+Backend-Kotlin: Api Restful para geração e clicks de cupons
