@@ -61,3 +61,55 @@ class CupomEntity (
     var createdAt: Instant = Instant.now()
 
 )
+
+
+
+//package br.com.iansistemas.kotlin.Backend_Kotlin.databases.entities;
+//
+//import jakarta.persistence.*;
+//import org.hibernate.annotations.CreationTimestamp;
+//import java.time.Instant;
+//import java.util.UUID;
+//
+//@Entity
+//@Table(
+//        name = "cupoms",
+//        uniqueConstraints = {
+//                @UniqueConstraint(name = "uk_cupons_code", columnNames = "code"),
+//                @UniqueConstraint(name = "uk_cupons_owner", columnNames = "owner")
+//        }
+//)
+//public class CupomEntity {
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.UUID)
+//    private UUID id;
+//
+//    @Column(nullable = false)
+//    private String code;
+//
+//    @Column(nullable = false)
+//    private String owner;
+//
+//    @Column(nullable = false)
+//    private int clicks;
+//
+//    @CreationTimestamp
+//    private Instant createdAt;
+//
+//    // Getters e Setters
+//    public UUID getId() { return id; }
+//    public void setId(UUID id) { this.id = id; }
+//
+//    public String getCode() { return code; }
+//    public void setCode(String code) { this.code = code; }
+//
+//    public String getOwner() { return owner; }
+//    public void setOwner(String owner) { this.owner = owner; }
+//
+//    public int getClicks() { return clicks; }
+//    public void setClicks(int clicks) { this.clicks = clicks; }
+//
+//    public Instant getCreatedAt() { return createdAt; }
+//    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
+//}

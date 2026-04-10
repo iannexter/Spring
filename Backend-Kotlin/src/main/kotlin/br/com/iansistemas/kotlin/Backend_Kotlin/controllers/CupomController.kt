@@ -78,3 +78,44 @@ class CupomController(
 
 
 }
+
+
+
+
+//package br.com.iansistemas.kotlin.Backend_Kotlin.controllers;
+//
+//import br.com.iansistemas.kotlin.Backend_Kotlin.dtos.CupomDto;
+//import br.com.iansistemas.kotlin.Backend_Kotlin.dtos.CupomRequest;
+//import br.com.iansistemas.kotlin.Backend_Kotlin.services.CupomService;
+//import org.springframework.http.HttpHeaders;
+//import org.springframework.http.HttpStatus;
+//import org.springframework.http.ResponseEntity;
+//import org.springframework.web.bind.annotation.*;
+//
+//@RestController
+//public class CupomController {
+//
+//    private final CupomService service;
+//
+//    public CupomController(CupomService service) {
+//        this.service = service;
+//    }
+//
+//    @GetMapping("/click/{code}")
+//    public ResponseEntity<Void> click(@PathVariable String code) {
+//        String url = service.click(code);
+//        return ResponseEntity.status(HttpStatus.FOUND)
+//                .header(HttpHeaders.LOCATION, url)
+//                .build();
+//    }
+//
+//    @GetMapping("/{code}")
+//    public CupomDto fetch(@PathVariable String code) {
+//        return service.fetch(code);
+//    }
+//
+//    @PostMapping("/register")
+//    public CupomDto post(@RequestBody CupomRequest cupom) {
+//        return service.register(cupom.getCode(), cupom.getOwner());
+//    }
+//}
