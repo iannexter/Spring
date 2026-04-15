@@ -45,5 +45,12 @@ public class CoinController {
 
 
 
+    @GetMapping
+    public ResponseEntity get(){
+
+        return new ResponseEntity<>(coinRepository.getAll(), HttpStatus.OK);
+
+    }
+
 
 }
