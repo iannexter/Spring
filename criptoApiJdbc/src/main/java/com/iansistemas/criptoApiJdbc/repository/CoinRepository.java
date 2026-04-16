@@ -1,5 +1,6 @@
 package com.iansistemas.criptoApiJdbc.repository;
 
+import com.iansistemas.criptoApiJdbc.dto.CoinDTO;
 import com.iansistemas.criptoApiJdbc.entity.Coin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -88,20 +89,20 @@ public class CoinRepository {
     //Chama o metodo mapRow(...)
     //Junta todos os objetos retornados em uma List<Coin>
 
-    public List<Coin> getAll(){
+    public List<CoinDTO> getAll(){
 
-        return jdbcTemplate.query(SELECT_ALL, new RowMapper<Coin>() {
+        return jdbcTemplate.query(SELECT_ALL, new RowMapper<CoinDTO>() {
             @Override
-            public Coin mapRow(ResultSet rs, int rowNum) throws SQLException {
+            public CoinDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
 
 
-                Coin coin = new Coin();
+                CoinDTO coinDTO = new CoinDTO();
 
-                coin.setName(rs.getString("name"));
-                coin.setQuantity(rs.getBigDecimal("quantity"));
+                coinDTO.setName(rs.getString("name"));
+                coinDTO.setQuantity(rs.getBigDecimal("quantity"));
 
 
-                return coin;
+                return coinDTO;
 
             }
         });
