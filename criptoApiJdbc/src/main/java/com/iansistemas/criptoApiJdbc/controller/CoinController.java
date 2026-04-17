@@ -53,4 +53,22 @@ public class CoinController {
     }
 
 
+    @GetMapping("/{name}")
+    public ResponseEntity get(@PathVariable String name){
+
+        try{
+
+            return new ResponseEntity<>(coinRepository.getByName(name), HttpStatus.OK);
+
+        }catch (Exception error){
+
+            return new ResponseEntity<>(error.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+
+
+        }
+
+
+    }
+
+
 }
