@@ -66,11 +66,11 @@ public class IniciarApplication implements CommandLineRunner {
 //		pessoaRepository.save(pessoa2);
 
 
-		pessoaService.criarPessoa(new Pessoa(5L, "Felipe", 19));
-
-		pessoaService.criarPessoa(new Pessoa(6L, "Matheus", 21));
-
-		pessoaService.criarPessoa(new Pessoa(7L, "Pedro", 23));
+//		pessoaService.criarPessoa(new Pessoa(5L, "Felipe", 19));
+//
+//		pessoaService.criarPessoa(new Pessoa(6L, "Matheus", 21));
+//
+//		pessoaService.criarPessoa(new Pessoa(7L, "Pedro", 23));
 
 
 		System.out.println("Número de pessoas salvas: " + pessoaRepository.count());

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pessoas</title>
+</head>
+<body>
+
+    <h1>Lista de Pessoas</h1>
+
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Ações</th>
+
+        </tr>
+
+
+<!--    th diz que vai percorrer uma lista-->
+        <tr th:each="pessoa: ${pessoas}">
+
+            <td th:text="${pessoa.id}"></td>
+            <td th:text="${pessoa.nome}"></td>
+            <td th:text="${pessoa.idade}"></td>
+
+            <td>
+
+                <a href="">Editar</a>
+                <a href="">Apagar</a>
+                
+            </td>
+
+
+        </tr>
+
+    </table>
+
+
+</body>
+</html>
