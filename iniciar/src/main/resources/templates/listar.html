@@ -21,6 +21,8 @@
 
 
 <!--    th diz que vai percorrer uma lista-->
+<!--    é o recurso do Thymeleaf usado para percorrer uma coleção -->
+<!--    (lista, array, conjunto etc.) e gerar HTML repetido para cada elemento.-->
         <tr th:each="pessoa: ${pessoas}">
 
             <td th:text="${pessoa.id}"></td>
@@ -38,6 +40,8 @@
         </tr>
 
     </table>
+
+    <a href="/pessoas/nova">Nova pessoa</a>
 
 
 </body>

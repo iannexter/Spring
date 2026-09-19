@@ -6,9 +6,7 @@ import com.exemplar.iniciar.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,12 +19,30 @@ public class PessoaController {
     private PessoaService pessoaService;
 
 
+    //O que vai acontecer:
+    //Navegador
+    //   ↓
+    //PessoaController
+    //   ↓
+    //PessoaService
+    //   ↓
+    //Banco de dados
+    //   ↓
+    //List<Pessoa>
+    //   ↓
+    //Model
+    //   ↓
+    //listar.html
+    //   ↓
+    //Tabela na tela
+
 
     @GetMapping
     //model é um objeto usado para transportar dados do Controller para a View
     public String listarPessoas(Model model){
 
         List<Pessoa> pessoas = pessoaService.obterPessoas();
+
 
         model.addAttribute("pessoas", pessoas);
 
@@ -37,6 +53,26 @@ public class PessoaController {
     }
 
 
+        @GetMapping("/nova")
+        public String mostrarFormularioDeNovaPessoa(Model model){
+
+        model.addAttribute("pessoa", new Pessoa());
+
+        model.addAttribute("acao", "/pessoas/nova");
+
+        return "formulario";
+
+        }
+
+
+        @PostMapping("/nova")
+        public String salvarNovaPessoa(@ModelAttribute Pessoa pessoa){
+
+            pessoaService.criarPessoa(pessoa);
+
+            return "redirect:/pessoas";
+
+        }
 
 
 
