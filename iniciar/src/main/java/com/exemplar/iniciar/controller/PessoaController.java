@@ -55,18 +55,21 @@ public class PessoaController {
 
 
 
-    @GetMapping("/nova")
-    public String mostrarFormulario(Model model) {
-
-        Pessoa pessoa = new Pessoa();
-
-        model.addAttribute("pessoa", pessoa);
-
-        return "formulario";
-    }
+//    @GetMapping("/nova")
+//    //Model serve para mandar dados do Controller para o HTML.
+//    public String mostrarFormulario(Model model) {
+//
+//        Pessoa pessoa = new Pessoa();
+//
+//        model.addAttribute("pessoa", pessoa);
+//
+//        return "formulario";
+//    }
 
 
     @PostMapping("/nova")
+    //O Spring busca os dados que vieram do formulário e monta um objeto
+    // Java Pessoa
     public String salvarPessoa(@ModelAttribute Pessoa pessoa) {
 
         pessoaService.criarPessoa(pessoa);
@@ -75,6 +78,36 @@ public class PessoaController {
     }
 
 
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditarPessoa(@PathVariable Long id,
+                                                @ModelAttribute Pessoa pessoa,
+    Model model) {
+
+
+        model.addAttribute("pessoa", pessoa);
+
+        model.addAttribute("acao", "/pessoas/editar/"+id);
+
+        return "formulario";
+    }
+
+
+    //@PathVariable serve para pegar um valor que está dentro
+    // da própria URL e transformar esse valor em uma
+    // variável no seu metodo do Controller.
+
+
+
+    @PostMapping("editar/{id}")
+    public String atualizarPessoa(@PathVariable Long id,
+                                  @ModelAttribute Pessoa pessoa
+                                  ){
+
+        pessoaService.atualizarPessoa(id,pessoa);
+
+        return "redirect:/pessoas";
+
+    }
 
 
 
@@ -83,15 +116,14 @@ public class PessoaController {
 
 
 
+        @GetMapping("/nova")
+        public String mostrarFormularioDeNovaPessoa(Model model){
 
-//        @GetMapping("/nova")
-//        public String mostrarFormularioDeNovaPessoa(Model model){
-//
-//        model.addAttribute("pessoa", new Pessoa());
+        model.addAttribute("pessoa", new Pessoa());
 
 
-        //model.addAttribute("acao", "/pessoas/nova");
-        //
+        model.addAttribute("acao", "/pessoas/nova");
+
         //Então o Thymeleaf gera algo equivalente a:
         //
         //<form action="/pessoas/nova" method="post">
@@ -137,11 +169,11 @@ public class PessoaController {
             //Então:
             //
             //th:object="${pessoa}"
-//        model.addAttribute("acao", "/pessoas/nova");
-//
-//        return "formulario";
-//
-//        }
+        model.addAttribute("acao", "/pessoas/nova");
+
+        return "formulario";
+
+        }
 
         //Ele vai receber do front-end via POST um objeto
         //@ModelAttribute
@@ -156,6 +188,14 @@ public class PessoaController {
 
 
 
+        @GetMapping("/eliminar/{id}")
+        public String eliminarPessoa(@PathVariable Long id){
+
+            pessoaService.eliminarPessoa(id);
+
+            return "redirect:/pessoas";
+
+        }
 
 
 

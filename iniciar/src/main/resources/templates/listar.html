@@ -31,8 +31,8 @@
 
             <td>
 
-                <a href="">Editar</a>
-                <a href="">Apagar</a>
+                <a th:href="@{/pessoas/editar/{id}(id=${pessoa.id})}">Editar </a>
+                <a th:href="@{/pessoas/eliminar/{id}(id=${pessoa.id})}">Apagar</a>
                 
             </td>
 

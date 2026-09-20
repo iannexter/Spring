@@ -13,6 +13,11 @@
           th:action="@{/pessoas/nova}"
           method="post">
 
+<!--   temos que ter um campo oculto com o elemento de id-->
+
+        <input type="hidden" th:field="*{id}">
+
+
         <label>
             Nome:
             <input type="text" th:field="*{nome}">
