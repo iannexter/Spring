@@ -8,16 +8,26 @@
 
     <h1>Formulario de Pessoas</h1>
 
-    <form th:object="${pessoa}" th:action="${acao}" method="post">
 
+    <form th:object="${pessoa}"
+          th:action="@{/pessoas/nova}"
+          method="post">
 
-        <label>Nome: <input type="text" th:field="*{nome}"></label><br/>
+        <label>
+            Nome:
+            <input type="text" th:field="*{nome}">
+        </label>
 
-        <label>Idade: <input type="number" th:field="*{idade}"></label><br/>
+        <br/>
+
+        <label>
+            Idade:
+            <input type="number" th:field="*{idade}">
+        </label>
+
+        <br/>
 
         <button type="submit">Adicionar</button>
-
-
     </form>
 
 
