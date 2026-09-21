@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pessoas</title>
+</head>
+<body>
+
+    <h1>Lista de Pessoas</h1>
+
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Ações</th>
+
+        </tr>
+
+
+<!--    th diz que vai percorrer uma lista-->
+<!--    é o recurso do Thymeleaf usado para percorrer uma coleção -->
+<!--    (lista, array, conjunto etc.) e gerar HTML repetido para cada elemento.-->
+        <tr th:each="pessoa: ${pessoas}">
+
+            <td th:text="${pessoa.id}"></td>
+            <td th:text="${pessoa.nome}"></td>
+            <td th:text="${pessoa.idade}"></td>
+
+            <td>
+
+                <a th:href="@{/pessoas/editar/{id}(id=${pessoa.id})}">Editar </a>
+                <a th:href="@{/pessoas/eliminar/{id}(id=${pessoa.id})}">Apagar</a>
+                
+            </td>
+
+
+        </tr>
+
+    </table>
+
+    <a href="/pessoas/nova">Nova pessoa</a>
+
+
+</body>
+</html>

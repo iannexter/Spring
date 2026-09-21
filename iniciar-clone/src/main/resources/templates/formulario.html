@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Pessoas</title>
+</head>
+<body>
+
+    <h1>Formulario de Pessoas</h1>
+
+
+    <form th:object="${pessoa}"
+          th:action="@{/pessoas/nova}"
+          method="post">
+
+<!--   temos que ter um campo oculto com o elemento de id-->
+
+        <input type="hidden" th:field="*{id}">
+
+
+        <label>
+            Nome:
+            <input type="text" th:field="*{nome}">
+        </label>
+
+        <br/>
+
+        <label>
+            Idade:
+            <input type="number" th:field="*{idade}">
+        </label>
+
+        <br/>
+
+        <button type="submit">Adicionar</button>
+    </form>
+
+
+    <a href="/pessoas">Voltar a Lista de Pessoas</a>
+
+
+</body>
+</html>
